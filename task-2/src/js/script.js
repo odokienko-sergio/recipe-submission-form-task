@@ -2,10 +2,10 @@
 class RecipeApi {
     constructor() {
         this.cache = {};
-        this.cacheTime = 5 * 60 * 1000; // Cache time set to 5 minutes
+        this.cacheTime = 5 * 60 * 1000; // Cache time set to 5 minutes.
     }
 
-    // Modified getRecentRecipes to utilize caching
+    // I've modified getRecentRecipes to utilize caching
     async getRecentRecipes() {
         // Check cache for recent recipes
         if (this.cache.recentRecipes && Date.now() - this.cache.recentRecipes.timestamp < this.cacheTime) {
@@ -15,10 +15,12 @@ class RecipeApi {
         // Build URL with filters
         const url = new URL('/api/v2/recipes/latest', window.location.origin);
         url.searchParams.set('limit', '12');
+
         // Fetch
         const response = await fetch(url);
         const data = await response.json();
 
+        // I've added this part of code.
         // Store in cache
         this.cache.recentRecipes = {
             timestamp: Date.now(),
@@ -28,11 +30,12 @@ class RecipeApi {
         return data;
     }
 
-    // Modified searchRecipes to use an absolute URL
+    // I've modified searchRecipes to use an absolute URL
     async searchRecipes(query) {
         // Build Search URL
         const url = new URL('/api/v2/recipes', window.location.origin);
         url.searchParams.set('search', query);
+
         // Fetch results
         const response = await fetch(url);
         return response.json();
@@ -63,11 +66,11 @@ class RecipeApi {
 class RecipeRenderer {
     constructor() {
         this.recipesElement = document.getElementById("recipe-list");
-        this.loaderElement = document.getElementById("loader");
-        this.errorElement = document.getElementById("error");
+        this.loaderElement = document.getElementById("loader"); // I've added this element
+        this.errorElement = document.getElementById("error"); // I've added this element
     }
 
-    // Modified showRecipes to dynamically render recipes
+    // I've modified showRecipes to dynamically render recipes
     showRecipes(recipes) {
         recipes.forEach(recipe => {
             const recipeHTML = `
@@ -109,14 +112,14 @@ class RecipeRenderer {
 const api = new RecipeApi(); // No base URL
 const renderer = new RecipeRenderer();
 
-// Modified loadRecipes to handle errors and show loader
+// I've modified loadRecipes to handle errors and show loader
 async function loadRecipes() {
     try {
         renderer.showLoader();
         const recipes = await api.getRecentRecipes();
         renderer.showRecipes(recipes);
     } catch (err) {
-        console.error('Error loading recipes:', err);
+        console.error('Error loading recipes:', err); // I've added this line
         renderer.showError();
     }
 }
