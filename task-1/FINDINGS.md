@@ -1,80 +1,33 @@
-# A FOX
+# Findings Summary
 
-Welcome to the "A FOX" project! This README.md file will guide you through the setup and usage of the project.
+## Identified Issues:
 
-## Prerequisites
+1. **Validation Feedback:**
+   - The validation error message was generic, providing limited information to users.
 
-Before you begin, please ensure you have the following installed on your computer:
+2. **API Endpoint Assumption:**
+   - The code assumed the existence of the API endpoint ('/api/recipes') without explicit validation.
 
-- [Node.js](https://nodejs.org/) (v14 or later)
+3. **Error Handling in API Call:**
+   - There was no comprehensive error handling for the API call, leaving potential failures unmanaged.
 
-## Getting Started
+## Approaches Taken:
 
-Follow these steps to set up and run the project on your local machine.
+1. **Validation Feedback:**
+   - Improved the validation feedback by providing more informative error messages for each required field.
 
-1. **Clone the Repository:**
+2. **API Endpoint Validation:**
+   - Addressed the assumption of the API endpoint by introducing a variable (`apiUrl`) for better management.
+   - If the API endpoint is invalid or missing, appropriate error messages are logged and displayed.
 
-git clone https://git.foxminded.ua/foxstudent104782/html-css.git
+3. **Error Handling in API Call:**
+   - Enhanced error handling for the API call to manage failed requests effectively.
+   - Displayed an alert message on the client side for users in case of API call failure.
 
-2. **Navigate to Project Directory:**
+4. **Additional Improvement:**
+   - Ensured that form fields are cleared on successful submission, providing a better user experience.
 
-cd html-css
+---
 
-3. **Check Node.js Version:**
+**Note:** Detailed comments have been added to the JavaScript code file (`script.js`) to explain each modification made.
 
-node -v
-
-4. **Install Dependencies:**
-
-npm install
-
-5. **Install Webpack:**
-
-npm install -g webpack webpack-cli
-
-6. **Build the Project:**
-
-webpack
-
-## Making Changes
-
-Edit the HTML, CSS, and JavaScript files in the `src` directory to make the desired changes to your project.
-
-## Viewing Your Changes
-
-Open the `index.html` file in a web browser to view the changes you've made.
-
-## Version Control
-
-If you want to contribute or keep track of your changes, follow these steps:
-
-1. **Create a New Branch:**
-
-git checkout -b feature/your-feature-name
-
-Replace your-feature-name with a meaningful name for your new feature or task.
-
-2. **Commit Your Changes:**
-
-git add .
-git commit -m "Implemented changes according to Figma design"
-
-3. **Push to GitHub:**
-
-git push origin feature/your-feature-name
-
-4. **Create a Pull Request:**
-- On GitHub, create a pull request from your feature branch to the main branch of the repository.
-- Provide a clear description of the changes.
-
-## Collaborating
-
-If you're collaborating with others, make sure to communicate and follow any collaboration guidelines set by your team.
-
-## Troubleshooting
-
-If you encounter any issues, refer to the project's documentation or seek help from the project maintainers.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
