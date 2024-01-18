@@ -9,7 +9,7 @@ class Recipe {
 
 // Input validation
 function validateInputs(title, ingredients, instructions) {
-    // 1. I've improved validation feedback
+    // I've improved validation feedback
     if (!title || !ingredients || !instructions) {
         alert('All fields are required.');
         return false;
@@ -20,7 +20,7 @@ function validateInputs(title, ingredients, instructions) {
 // Handle form submission
 const form = document.getElementById('recipe-form');
 form.addEventListener('submit', async (e) => {
-    e.preventDefault(); // 2. I've prevented the default form submission behavior
+    e.preventDefault(); // I've prevented the default form submission behavior
 
     // Get data
     const title = form.elements['title'].value;
@@ -38,7 +38,7 @@ form.addEventListener('submit', async (e) => {
 
     // POST to API
     try {
-        // 3. Handling API endpoint validation
+        // Handling API endpoint validation
         const resp = await fetch('/api/recipes', {
             method: 'POST',
             headers: {
@@ -47,7 +47,7 @@ form.addEventListener('submit', async (e) => {
             body: JSON.stringify(recipe),
         });
 
-        // 4. Handling errors in the API call
+        // Handling errors in the API call
         const data = await resp.json();
         console.log('Recipe saved!', data);
 
